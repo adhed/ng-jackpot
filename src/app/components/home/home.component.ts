@@ -1,7 +1,7 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { GameCategory } from '@app/models';
 import { GamesService } from '@app/services/games.service';
-import { Observable } from 'rxjs';
+import { Subject } from 'rxjs';
 
 @Component({
   selector: 'app-home',
@@ -10,11 +10,11 @@ import { Observable } from 'rxjs';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class HomeComponent implements OnInit {
-  public categories$: Observable<GameCategory[]>;
+  public categories$: Subject<GameCategory[]> = this.gamesService.categories$;
 
   constructor(private readonly gamesService: GamesService) {}
 
   public ngOnInit(): void {
-    this.categories$ = this.gamesService.categories$;
+    this.gamesService.loadGames();
   }
 }

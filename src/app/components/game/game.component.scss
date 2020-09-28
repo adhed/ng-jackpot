@@ -11,6 +11,10 @@
   &__image {
     width: 220px;
     height: 154px;
+
+    &:hover {
+      cursor: pointer;
+    }
   }
 }
 

@@ -3,7 +3,6 @@ import { Injectable } from '@angular/core';
 import { API_URL } from '@app/constants';
 import { Game, GameCategory } from '@app/models';
 import { Observable, of, Subject } from 'rxjs';
-import { pipeFromArray } from 'rxjs/internal/util/pipe';
 import { tap } from 'rxjs/operators';
 
 @Injectable({
@@ -13,21 +12,24 @@ export class GamesService {
 
   public selectedCategory: GameCategory = null;
   public categories$: Subject<GameCategory[]> = new Subject();
+  public visibleGames$: Subject<Game[]> = new Subject();
 
   private games: Game[];
 
   constructor(private readonly httpClient: HttpClient) {}
 
-  getGames(): Observable<any> {
+  loadGames(): void {
     if (this.games) {
-      return of(this.games);
+      this.visibleGames$.next(this.games);
     }
 
-    return this.httpClient.get(`${API_URL}/games.php`)
+    this.httpClient.get(`${API_URL}/games.php`)
       .pipe(
         tap((games) => this.games = games as Game[]),
-        tap((games) => this.categories$.next(this.getCategories(games))),
-      );
+        tap(() => this.visibleGames$.next(this.games)),
+        tap(() => this.categories$.next(this.getCategories(this.games))),
+      )
+      .subscribe();
   }
 
   private getCategories(games: Game[]): GameCategory[] {
