@@ -123,6 +123,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "ng-jackpot"
+    }
+  },
+  "defaultProject": "ng-jackpot",
+  "cli": {
+    "analytics": "de8aa492-ddbe-48a3-82d6-18dc284adea9"
+  }
 }
