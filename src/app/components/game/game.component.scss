@@ -1,4 +1,4 @@
-:host {
+.game {
   border-radius: 15px;
   border: 1px solid transparent;
   display: flex;
@@ -6,6 +6,14 @@
   margin: 15px 5px;
   overflow: hidden;
   position: relative;
+
+  &--top {
+    border: 2px solid red;
+  }
+
+  &--new {
+    border: 2px solid blue;
+  }
 }
 
 .game {
@@ -26,6 +34,54 @@
     position: absolute;
     text-align: center;
     width: 100%;
+    z-index: 1;
+  }
+
+  .ribbon {
+    width: 115px;
+    height: 96px;
+    overflow: hidden;
+    position: absolute;
+    top: -15px;
+    right: -8px;
+    z-index: 2;
+
+    &::before, &::after {
+      position: absolute;
+      z-index: -1;
+      content: '';
+      display: block;
+      border: 5px solid green;
+      border-top-color: transparent;
+      border-right-color: transparent;
+    }
+
+    &::before {
+      top: 0;
+      left: 0;
+    }
+
+    &::after {
+      bottom: 0;
+      right: 0;
+    }
+
+    &__label {
+      position: absolute;
+      display: block;
+      width: 225px;
+      padding: 4px 0;
+      background-color: green;
+      box-shadow: 0 5px 10px rgba(0,0,0,.1);
+      color: #fff;
+      font: 700 18px/1 'Lato', sans-serif;
+      text-shadow: 0 1px 1px rgba(0,0,0,.2);
+      text-transform: uppercase;
+      text-align: center;
+      left: -25px;
+      top: 30px;
+      transform: rotate(45deg);
+    }
   }
 }
 

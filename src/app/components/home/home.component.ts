@@ -5,7 +5,7 @@ import { JackpotValue } from '@app/models/jackpot';
 import { JackpotService } from '@app/services';
 import { GamesService } from '@app/services/games.service';
 import { BehaviorSubject, Subject, timer } from 'rxjs';
-import { takeUntil, tap } from 'rxjs/operators';
+import { takeUntil } from 'rxjs/operators';
 
 @Component({
   selector: 'app-home',
@@ -30,7 +30,6 @@ export class HomeComponent implements OnInit, OnDestroy {
 
     timer(0, JACKPOT_REFRESH_TIME)
       .pipe(
-        tap(() => console.log('update!')),
         takeUntil(this.destroy$)
       )
       .subscribe(() => this.jackpotService.updateJackpots());
