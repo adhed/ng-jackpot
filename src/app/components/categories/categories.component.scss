@@ -12,6 +12,8 @@
   font-size: 22px;
 
   &__element {
+    color: white;
+    text-decoration: none;
     padding: 15px 35px;
     text-transform: capitalize;
 
@@ -22,6 +24,7 @@
 
     &--active {
       background: #8DC63F;
+      pointer-events: none;
     }
   }
 }

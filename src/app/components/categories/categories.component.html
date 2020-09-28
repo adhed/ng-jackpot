@@ -1,5 +1,8 @@
 <nav class="categories">
-  <a *ngFor="let category of categories; let index" class="categories__element element">
-    <span class="element__label">{{ category }}</span>
+  <a *ngFor="let category of categories; let index"
+    (click)="onCategoryClick(category)"
+    class="categories__element element"
+    [class.categories__element--active]="isActiveCategory(category)">
+      <span class="element__label">{{ category }}</span>
   </a>
 </nav>

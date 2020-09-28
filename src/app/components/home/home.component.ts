@@ -11,6 +11,7 @@ import { Subject } from 'rxjs';
 })
 export class HomeComponent implements OnInit {
   public categories$: Subject<GameCategory[]> = this.gamesService.categories$;
+  public activeCategory$: Subject<GameCategory> = this.gamesService.activeCategory$;
 
   constructor(private readonly gamesService: GamesService) {}
 
