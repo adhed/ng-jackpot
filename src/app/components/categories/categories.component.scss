@@ -1,0 +1,27 @@
+:host {
+  display: flex;
+  border-top: 25px solid black;
+}
+
+.categories {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  background: #373737;
+  color: white;
+  font-size: 22px;
+
+  &__element {
+    padding: 15px 35px;
+    text-transform: capitalize;
+
+    &:hover {
+      cursor: pointer;
+      background: #8DC63F;
+    }
+
+    &--active {
+      background: #8DC63F;
+    }
+  }
+}

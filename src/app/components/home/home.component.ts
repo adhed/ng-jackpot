@@ -1,4 +1,7 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
+import { GameCategory } from '@app/models';
+import { GamesService } from '@app/services/games.service';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-home',
@@ -6,6 +9,12 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
   styleUrls: ['./home.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class HomeComponent {
+export class HomeComponent implements OnInit {
+  public categories$: Observable<GameCategory[]>;
 
+  constructor(private readonly gamesService: GamesService) {}
+
+  public ngOnInit(): void {
+    this.categories$ = this.gamesService.categories$;
+  }
 }
