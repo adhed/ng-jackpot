@@ -1,1 +1,1 @@
-<app-game *ngFor="let game of games$ | async" [game]="game"></app-game>
+<app-game *ngFor="let game of games$ | async" [game]="game" [jackpot]="getGameJackpot(game)"></app-game>

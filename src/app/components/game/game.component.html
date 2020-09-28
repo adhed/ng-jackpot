@@ -1,1 +1,2 @@
 <img class="game__image" [src]="game.image" />
+<span *ngIf="jackpot" class="game__jackpot">{{ jackpot | currency: 'GBP' }}</span>

@@ -5,6 +5,7 @@
   flex-direction: column;
   margin: 15px 5px;
   overflow: hidden;
+  position: relative;
 }
 
 .game {
@@ -15,6 +16,16 @@
     &:hover {
       cursor: pointer;
     }
+  }
+
+  &__jackpot {
+    background: rgb(black, 0.3);
+    color: white;
+    font-weight: bold;
+    padding: 10px;
+    position: absolute;
+    text-align: center;
+    width: 100%;
   }
 }
 

@@ -1,5 +1,6 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 import { Game } from '@app/models';
+import { JackpotValue } from '@app/models/jackpot';
 import { GamesService } from '@app/services/games.service';
 import { Subject } from 'rxjs';
 
@@ -10,7 +11,13 @@ import { Subject } from 'rxjs';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class GamesListComponent {
-  public games$: Subject<Game[]> = this.gamesService.visibleGames$;
+  @Input() public jackpots: JackpotValue[] = [];
+
+  public readonly games$: Subject<Game[]> = this.gamesService.visibleGames$;
 
   constructor(private readonly gamesService: GamesService) {}
+
+  public getGameJackpot(game: Game): number {
+    return this.jackpots.find((jackpot) => jackpot.game === game.id)?.amount || 0;
+  }
 }

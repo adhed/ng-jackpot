@@ -1,4 +1,5 @@
 import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
+import { JACKPOT_CURRENCY } from '@app/constants';
 import { Game } from '@app/models';
 
 @Component({
@@ -9,4 +10,7 @@ import { Game } from '@app/models';
 })
 export class GameComponent  {
   @Input() public game: Game;
+  @Input() public jackpot: number;
+
+  public readonly jackpotCurrency = JACKPOT_CURRENCY;
 }
