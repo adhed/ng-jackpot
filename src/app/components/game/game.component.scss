@@ -1,3 +1,5 @@
+@import 'src/app/styles/variables.scss';
+
 .game {
   display: flex;
   flex-direction: column;
@@ -20,11 +22,13 @@
 
   &__image {
     border-radius: 15px;
+    border: 3px solid transparent;
     box-shadow: 7px 9px 5px -2px rgba(0,0,0,0.34);
     width: 260px;
     height: 154px;
 
     &:hover {
+      border: 3px solid $highlight;
       cursor: pointer;
     }
   }
@@ -36,17 +40,21 @@
 
   &__jackpot {
     background: rgba(0, 0, 0, 0.3);
-    color: white;
+    color: $primary-font;
     font-weight: bold;
     padding: 10px;
     position: absolute;
     text-align: center;
     left: 0;
-    max-width: 100%;
+    max-width: 90%;
+    margin-left: auto;
+    pointer-events: none;
     z-index: 1;
     right: 0;
+    top: 4px;
     overflow: hidden;
     border-radius: 20px;
+    margin-right: auto;
   }
 
   .ribbon {

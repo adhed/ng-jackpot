@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
+import { ChangeDetectionStrategy, Component, HostListener, Input } from '@angular/core';
 import { JACKPOT_CURRENCY } from '@app/constants';
 import { Game, GameCategory } from '@app/models';
 

@@ -1,18 +1,20 @@
 @import 'src/app/styles/variables.scss';
 
 :host {
-  display: flex;
-  position: absolute;
-  top: 0;
+  align-items: center;
+  background: rgba(0, 0, 0, 0.7);
   bottom: 0;
   color: $primary-font;
-  margin-top: auto;
-  margin-bottom: auto;
+  display: flex;
   height: 40px;
-  background: black;
-  width: 100%;
-  align-items: center;
   justify-content: center;
+  left: 0;
+  margin: auto;
+  pointer-events: none;
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 98%;
 
   &:hover {
     cursor: pointer;
