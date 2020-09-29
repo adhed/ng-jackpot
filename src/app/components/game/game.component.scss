@@ -1,10 +1,14 @@
 .game {
-
   display: flex;
   flex-direction: column;
-  margin: 15px 5px;
+  margin: 16px 8px;
   position: relative;
 
+  &:hover {
+    .game__label {
+      opacity: 1;
+    }
+  }
 
   &--top {
     border: 2px solid red;
@@ -13,18 +17,21 @@
   &--new {
     border: 2px solid blue;
   }
-}
 
-.game {
   &__image {
     border-radius: 15px;
-    border: 1px solid transparent;
+    box-shadow: 7px 9px 5px -2px rgba(0,0,0,0.34);
     width: 260px;
     height: 154px;
 
     &:hover {
       cursor: pointer;
     }
+  }
+
+  &__label {
+    opacity: 0;
+    transition: ease-in-out all 0.3s;
   }
 
   &__jackpot {

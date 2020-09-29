@@ -8,6 +8,7 @@ import { HomeComponent } from './components/home/home.component';
 import { GamesListComponent } from './components/games-list/games-list.component';
 import { GameComponent } from './components/game/game.component';
 import { CategoriesComponent } from './components/categories/categories.component';
+import { GameLabelComponent } from './components/game-label/game-label.component';
 
 @NgModule({
   declarations: [
@@ -16,6 +17,7 @@ import { CategoriesComponent } from './components/categories/categories.componen
     GamesListComponent,
     GameComponent,
     CategoriesComponent,
+    GameLabelComponent,
   ],
   imports: [
     BrowserModule,

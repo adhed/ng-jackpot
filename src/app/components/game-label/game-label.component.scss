@@ -1,0 +1,20 @@
+@import 'src/app/styles/variables.scss';
+
+:host {
+  display: flex;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  color: $primary-font;
+  margin-top: auto;
+  margin-bottom: auto;
+  height: 40px;
+  background: black;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+
+  &:hover {
+    cursor: pointer;
+  }
+}
