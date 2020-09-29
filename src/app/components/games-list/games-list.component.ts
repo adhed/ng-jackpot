@@ -21,4 +21,8 @@ export class GamesListComponent {
   public getGameJackpot(game: Game): number {
     return this.jackpots.find((jackpot) => jackpot.game === game.id)?.amount || 0;
   }
+
+  public trackByGameId(game: Game): string {
+    return game.id;
+  }
 }

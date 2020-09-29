@@ -1,3 +1,5 @@
+@import 'src/app/styles/breakpoints.scss';
+
 :host {
   display: flex;
   border-top: 25px solid black;
@@ -10,6 +12,14 @@
   background: #373737;
   color: white;
   font-size: 22px;
+
+  @include max-medium() {
+    font-size: 18px;
+  }
+
+  @include max-small() {
+    font-size: 14px;
+  }
 
   &__element {
     color: white;
