@@ -8,6 +8,8 @@
   top: -6px;
   right: -7px;
   z-index: 2;
+  cursor: pointer;
+  pointer-events: none;
 
   &::before, &::after {
     position: absolute;

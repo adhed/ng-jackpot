@@ -1,5 +1,7 @@
+@import 'src/app/styles/variables.scss';
+
 :host {
-  background: white;
+  background: $background;
   display: block;
   width: 100%;
 }
