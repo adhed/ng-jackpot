@@ -18,3 +18,7 @@ export enum GameCategory {
   Virtual = 'virtual',
   Other = 'other',
 }
+
+export interface GroupedGames {
+  [key: string]: string[];
+}

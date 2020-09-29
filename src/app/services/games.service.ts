@@ -1,8 +1,8 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { API_URL } from '@app/constants';
-import { Game, GameCategory } from '@app/models';
-import { getCategoriesFromGames, getGamesFromCategory } from '@app/utils';
+import { Game, GameCategory, GroupedGames } from '@app/models';
+import { getCategoriesFromGames, getGamesFromCategory, getGroupedGamesByCategories } from '@app/utils';
 import { BehaviorSubject, Subject } from 'rxjs';
 import { tap } from 'rxjs/operators';
 
@@ -15,28 +15,31 @@ export class GamesService {
   public categories$: Subject<GameCategory[]> = new Subject();
   public visibleGames$: Subject<Game[]> = new Subject();
 
-  private games: Game[];
+  private allGames: Game[];
+  private groupedGames: GroupedGames = {};
 
-  private get gamesList(): Game[] {
-    return this.activeCategory$.value ? this.filteredGames : this.games;
+  private get visibleGames(): Game[] {
+    return this.activeCategory$.value ? this.filteredGames : this.allGames;
   }
 
   private get filteredGames(): Game[] {
-    return getGamesFromCategory(this.games, this.activeCategory$.value);
+    return getGamesFromCategory(this.groupedGames, this.allGames, this.activeCategory$.value);
   }
 
   constructor(private readonly httpClient: HttpClient) {}
 
   loadGames(): void {
-    if (this.games) {
-      this.visibleGames$.next(this.gamesList);
+    if (this.allGames) {
+      this.visibleGames$.next(this.visibleGames);
+      return;
     }
 
     this.httpClient.get(`${API_URL}/games.php`)
       .pipe(
-        tap((games) => this.games = games as Game[]),
-        tap(() => this.visibleGames$.next(this.gamesList)),
-        tap(() => this.categories$.next(getCategoriesFromGames(this.games))),
+        tap((games) => this.allGames = games as Game[]),
+        tap(() => this.groupGamesByCategories()),
+        tap(() => this.visibleGames$.next(this.visibleGames)),
+        tap(() => this.categories$.next(getCategoriesFromGames(this.groupedGames))),
       )
       .subscribe();
   }
@@ -44,5 +47,9 @@ export class GamesService {
   setCategory(category: GameCategory): void {
     this.activeCategory$.next(category);
     this.loadGames();
+  }
+
+  private groupGamesByCategories(): void {
+    this.groupedGames = getGroupedGamesByCategories(this.allGames);
   }
 }
