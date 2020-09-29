@@ -4,7 +4,7 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 
 # Demo 
 
-https://adhed.github.io/ng-jackpot/category/other
+https://adhed.github.io/ng-jackpot/
 
 ## Development server
 
