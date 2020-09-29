@@ -1,4 +1,5 @@
 @import 'src/app/styles/breakpoints.scss';
+@import 'src/app/styles/variables.scss';
 
 :host {
   display: flex;
@@ -10,11 +11,12 @@
   justify-content: center;
   width: 100%;
   background: #373737;
-  color: white;
+  color: $primary-font;
+  flex-flow: row wrap;
   font-size: 22px;
 
   @include max-medium() {
-    font-size: 18px;
+    font-size: 16px;
   }
 
   @include max-small() {
@@ -22,18 +24,24 @@
   }
 
   &__element {
-    color: white;
+    color: $primary-font;
     text-decoration: none;
     padding: 15px 35px;
     text-transform: capitalize;
+    flex: 1;
+    text-align: center;
+
+    @include max-small() {
+      padding: 15px 30px;
+    }
 
     &:hover {
       cursor: pointer;
-      background: #8DC63F;
+      background: $highlight;
     }
 
     &--active {
-      background: #8DC63F;
+      background: $highlight;
       pointer-events: none;
     }
   }
