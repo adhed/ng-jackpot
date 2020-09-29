@@ -4,22 +4,10 @@ import { HttpClientModule } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { HomeComponent } from './components/home/home.component';
-import { GamesListComponent } from './components/games-list/games-list.component';
-import { GameComponent } from './components/game/game.component';
-import { CategoriesComponent } from './components/categories/categories.component';
-import { GameLabelComponent } from './components/game-label/game-label.component';
-import { GameRibbonComponent } from './components/game-ribbon/game-ribbon.component';
 
 @NgModule({
   declarations: [
-    AppComponent,
-    HomeComponent,
-    GamesListComponent,
-    GameComponent,
-    CategoriesComponent,
-    GameLabelComponent,
-    GameRibbonComponent,
+    AppComponent
   ],
   imports: [
     BrowserModule,

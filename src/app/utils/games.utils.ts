@@ -38,4 +38,4 @@ export const getGroupedGamesByCategories = (allGames: Game[]): GroupedGames => {
   });
 
   return groupedGames;
-}
+};

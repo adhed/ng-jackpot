@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { API_URL } from '@app/constants';
 import { Game, GameCategory, GroupedGames } from '@app/models';
 import { getCategoriesFromGames, getGamesFromCategory, getGroupedGamesByCategories } from '@app/utils';
-import { BehaviorSubject, Subject } from 'rxjs';
+import { BehaviorSubject, ReplaySubject } from 'rxjs';
 import { tap } from 'rxjs/operators';
 
 @Injectable({
@@ -12,8 +12,8 @@ import { tap } from 'rxjs/operators';
 export class GamesService {
 
   public activeCategory$: BehaviorSubject<GameCategory> = new BehaviorSubject(null);
-  public categories$: Subject<GameCategory[]> = new Subject();
-  public visibleGames$: Subject<Game[]> = new Subject();
+  public categories$: ReplaySubject<GameCategory[]> = new ReplaySubject();
+  public visibleGames$: ReplaySubject<Game[]> = new ReplaySubject();
 
   private allGames: Game[];
   private groupedGames: GroupedGames = {};
