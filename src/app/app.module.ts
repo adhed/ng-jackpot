@@ -9,6 +9,7 @@ import { GamesListComponent } from './components/games-list/games-list.component
 import { GameComponent } from './components/game/game.component';
 import { CategoriesComponent } from './components/categories/categories.component';
 import { GameLabelComponent } from './components/game-label/game-label.component';
+import { GameRibbonComponent } from './components/game-ribbon/game-ribbon.component';
 
 @NgModule({
   declarations: [
@@ -18,6 +19,7 @@ import { GameLabelComponent } from './components/game-label/game-label.component
     GameComponent,
     CategoriesComponent,
     GameLabelComponent,
+    GameRibbonComponent,
   ],
   imports: [
     BrowserModule,

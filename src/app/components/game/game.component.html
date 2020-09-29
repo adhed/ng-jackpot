@@ -2,13 +2,6 @@
   <img class="game__image" [src]="game.image" alt="game image" />
   <span *ngIf="jackpot" class="game__jackpot">{{ jackpot | currency: jackpotCurrency }}</span>
   <app-game-label class="game__label" [label]="game.name"></app-game-label>
-  <div *ngIf="shouldAddTopRibbon; else newRibbon" class="game__ribbon ribbon">
-    <span class="ribbon__label">top</span>
-  </div>
-  <ng-template #newRibbon>
-    <div *ngIf="shouldAddNewRibbon" class="game__ribbon ribbon">
-      <span class="ribbon__label">new</span>
-    </div>
-  </ng-template>
+  <app-game-ribbon [game]="game" [activeCategory]="activeCategory"></app-game-ribbon>
 </div>
 
