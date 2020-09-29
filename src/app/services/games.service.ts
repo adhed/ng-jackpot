@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { API_URL } from '@app/constants';
+import { API_URL, OTHER_CATEGORIES } from '@app/constants';
 import { Game, GameCategory } from '@app/models';
 import { BehaviorSubject, Subject } from 'rxjs';
 import { tap } from 'rxjs/operators';
@@ -21,7 +21,13 @@ export class GamesService {
   }
 
   private get filteredGames(): Game[] {
-    return this.games.filter((game) => game.categories.includes(this.activeCategory$.value));
+    return this.games.filter((game) => {
+      if (this.activeCategory$.value === GameCategory.Other) {
+        return game.categories.some((gameCategory) => OTHER_CATEGORIES.includes(gameCategory));
+      }
+
+      return game.categories.includes(this.activeCategory$.value);
+    });
   }
 
   constructor(private readonly httpClient: HttpClient) {}
@@ -50,12 +56,16 @@ export class GamesService {
 
     games.forEach((game) => {
       game.categories.forEach((category) => {
-        if (!categories.includes(category)) {
-          categories.push(category);
+        if (!categories.includes(category) && !categories.includes(GameCategory.Other)) {
+          categories.push(this.getCategoryName(category));
         }
       });
     });
 
     return categories;
+  }
+
+  private getCategoryName(category: GameCategory): GameCategory {
+    return OTHER_CATEGORIES.includes(category) ? GameCategory.Other : category;
   }
 }

@@ -6,8 +6,15 @@ export interface Game {
 }
 
 export enum GameCategory {
-  Top = 'top',
-  Slots = 'slots',
+  Ball = 'ball',
+  Blackjack = 'blackjack',
+  Classic = 'classic',
+  Fun = 'fun',
   New = 'new',
-  Poker = 'poker'
+  Poker = 'poker',
+  Roulette = 'roulette',
+  Slots = 'slots',
+  Top = 'top',
+  Virtual = 'virtual',
+  Other = 'other',
 }
