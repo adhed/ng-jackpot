@@ -1,7 +1,8 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { API_URL, OTHER_CATEGORIES } from '@app/constants';
+import { API_URL } from '@app/constants';
 import { Game, GameCategory } from '@app/models';
+import { getCategoriesFromGames, getGamesFromCategory } from '@app/utils';
 import { BehaviorSubject, Subject } from 'rxjs';
 import { tap } from 'rxjs/operators';
 
@@ -21,13 +22,7 @@ export class GamesService {
   }
 
   private get filteredGames(): Game[] {
-    return this.games.filter((game) => {
-      if (this.activeCategory$.value === GameCategory.Other) {
-        return game.categories.some((gameCategory) => OTHER_CATEGORIES.includes(gameCategory));
-      }
-
-      return game.categories.includes(this.activeCategory$.value);
-    });
+    return getGamesFromCategory(this.games, this.activeCategory$.value);
   }
 
   constructor(private readonly httpClient: HttpClient) {}
@@ -41,7 +36,7 @@ export class GamesService {
       .pipe(
         tap((games) => this.games = games as Game[]),
         tap(() => this.visibleGames$.next(this.gamesList)),
-        tap(() => this.categories$.next(this.getCategories(this.games))),
+        tap(() => this.categories$.next(getCategoriesFromGames(this.games))),
       )
       .subscribe();
   }
@@ -49,23 +44,5 @@ export class GamesService {
   setCategory(category: GameCategory): void {
     this.activeCategory$.next(category);
     this.loadGames();
-  }
-
-  private getCategories(games: Game[]): GameCategory[] {
-    const categories = [];
-
-    games.forEach((game) => {
-      game.categories.forEach((category) => {
-        if (!categories.includes(category) && !categories.includes(GameCategory.Other)) {
-          categories.push(this.getCategoryName(category));
-        }
-      });
-    });
-
-    return categories;
-  }
-
-  private getCategoryName(category: GameCategory): GameCategory {
-    return OTHER_CATEGORIES.includes(category) ? GameCategory.Other : category;
   }
 }
