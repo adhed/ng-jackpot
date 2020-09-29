@@ -20,6 +20,6 @@ export class GameRibbonComponent {
   }
 
   private shouldShowRibbon(categoryType: GameCategory): boolean {
-    return (!this.activeCategory || this.activeCategory !== categoryType) && this.game.categories.includes(categoryType);
+    return (!this.activeCategory || this.activeCategory !== categoryType) && this.game?.categories.includes(categoryType);
   }
 }

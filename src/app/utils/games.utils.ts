@@ -5,10 +5,6 @@ export const getCategoriesFromGames = (groupedGames: GroupedGames): GameCategory
   return Object.keys(groupedGames) as GameCategory[];
 };
 
-export const getCategoryName = (category: GameCategory): GameCategory => {
-  return OTHER_CATEGORIES.includes(category) ? GameCategory.Other : category;
-};
-
 export const getGamesFromCategory = (groupedGames: GroupedGames, allGames: Game[], activeCategory: GameCategory): Game[] => {
   return groupedGames[activeCategory]?.map((gameId: string) => allGames.find((game) => game.id === gameId));
 };

@@ -1,4 +1,6 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { GamesServiceMock } from '@app/mocks/games.service.mock';
+import { GamesService } from '@app/services';
 
 import { GamesListComponent } from './games-list.component';
 
@@ -8,7 +10,8 @@ describe('GamesListComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ GamesListComponent ]
+      declarations: [ GamesListComponent ],
+      providers: [{ provide: GamesService, useClass: GamesServiceMock }]
     })
     .compileComponents();
   }));
