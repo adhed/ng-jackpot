@@ -28,8 +28,11 @@
     text-decoration: none;
     padding: 15px 35px;
     text-transform: capitalize;
-    flex: 1;
     text-align: center;
+
+    @include max-medium() {
+      flex: 1;
+    }
 
     @include max-small() {
       padding: 15px 30px;

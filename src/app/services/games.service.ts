@@ -39,7 +39,7 @@ export class GamesService {
         tap((games) => this.allGames = games as Game[]),
         tap(() => this.groupGamesByCategories()),
         tap(() => this.visibleGames$.next(this.visibleGames)),
-        tap(() => this.categories$.next(getCategoriesFromGames(this.groupedGames))),
+        tap(() => this.prepareCategories()),
       )
       .subscribe();
   }
@@ -51,5 +51,9 @@ export class GamesService {
 
   private groupGamesByCategories(): void {
     this.groupedGames = getGroupedGamesByCategories(this.allGames);
+  }
+
+  private prepareCategories(): void {
+    this.categories$.next(getCategoriesFromGames(this.groupedGames));
   }
 }

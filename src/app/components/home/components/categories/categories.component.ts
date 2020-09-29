@@ -1,5 +1,6 @@
 import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 import { Router } from '@angular/router';
+import { CATEGORIES_SPECIAL_LABELS } from '@app/constants';
 import { GameCategory } from '@app/models';
 
 @Component({
@@ -24,5 +25,9 @@ export class CategoriesComponent {
 
   public isActiveCategory(category: GameCategory): boolean {
     return category === this.activeCategory;
+  }
+
+  public getCategoryLabel(category: GameCategory): string {
+    return CATEGORIES_SPECIAL_LABELS[category] || category;
   }
 }

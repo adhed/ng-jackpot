@@ -3,6 +3,6 @@
     (click)="onCategoryClick(category)"
     class="categories__element element"
     [class.categories__element--active]="isActiveCategory(category)">
-      <span class="element__label">{{ category }}</span>
+      <span class="element__label">{{ getCategoryLabel(category) }}</span>
   </a>
 </nav>

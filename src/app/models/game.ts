@@ -22,3 +22,11 @@ export enum GameCategory {
 export interface GroupedGames {
   [key: string]: string[];
 }
+
+export interface CategoryPriority {
+  [key: string]: number;
+}
+
+export interface CategoryLabel {
+  [key: string]: string;
+}
