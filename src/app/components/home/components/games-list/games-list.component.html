@@ -1,1 +1,0 @@
-<app-game *ngFor="let game of games$ | async; trackBy: trackByGameId" [game]="game" [jackpot]="getGameJackpot(game)" [activeCategory]="activeCategory$ | async"></app-game>

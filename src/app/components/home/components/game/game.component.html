@@ -1,7 +1,0 @@
-<div class="game" *ngIf="game">
-  <img class="game__image" [src]="game.image" alt="game image" />
-  <span *ngIf="jackpot" class="game__jackpot">{{ jackpot | currency: jackpotCurrency }}</span>
-  <app-game-label class="game__label" [label]="game.name"></app-game-label>
-  <app-game-ribbon [game]="game" [activeCategory]="activeCategory"></app-game-ribbon>
-</div>
-

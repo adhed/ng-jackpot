@@ -1,8 +1,0 @@
-<div *ngIf="shouldAddTopRibbon; else newRibbon" class="ribbon">
-  <span class="ribbon__label">top</span>
-</div>
-<ng-template #newRibbon>
-  <div *ngIf="shouldAddNewRibbon" class="ribbon">
-    <span class="ribbon__label">new</span>
-  </div>
-</ng-template>
